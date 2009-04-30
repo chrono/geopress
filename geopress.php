@@ -602,7 +602,7 @@ function save_geo ($id, $name,$loc,$coord,$geom,$warn,$mapurl,$visible = 1,$map_
 		else {$checked = "";}
 ?>
 	    <tr>
-			<td width=5%><input type="hidden" name="locid[<?php echo $i?>]" value="<? echo $loc->geopress_id?>"/><input type="checkbox" value="1" name='locvisible[<?php echo $i?>]' <?php echo $checked?>/></td>
+			<td width=5%><input type="hidden" name="locid[<?php echo $i?>]" value="<?php echo $loc->geopress_id?>"/><input type="checkbox" value="1" name='locvisible[<?php echo $i?>]' <?php echo $checked?>/></td>
 	    	<td width=15%> <input size="10" type="text" value="<?php echo $loc->name?>" name='locname[<?php echo $i?>]' /></td>
 	    	<td width=50%> <input size="40" type="text" value="<?php echo $loc->loc?>" name='locaddr[<?php echo $i?>]' /></td>
 	    	<td> <input type="text" disabled="disabled" value="<?php echo $loc->coord?>" name='loccoord[<?php echo $i?>]' /></td>
@@ -1581,7 +1581,7 @@ function the_coord_rss() {
 	default:
 		$coord_tag = "\t<georss:point>$coord</georss:point>\n";
 		if($featurename != ""){
-  			$coord_tag .= "\t<georss:featurename>$featurename</georss:featurename>\n";
+  			$coord_tag .= "\t<georss:featurename><![CDATA[$featurename]]></georss:featurename>\n";
 		}		
  		break;
 	}
